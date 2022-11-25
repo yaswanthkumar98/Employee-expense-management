@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <p class="modal-title">{{!isEdit ? 'Add New Expense' : 'Update Expense'}}</p>
+    <a type="button" class="close fntsze-18" (click)="activeModal.dismiss('Cross click')" ><span aria-hidden="true">&times;</span></a>        
+  </div>
+  <div class="modal-body">
+    <span *ngIf="alert" class="text-center" style="color:red">{{alert}}</span>  
+    <div class="mt-3">
+        <label for="exampleInputEmail1">Expense Title</label>
+        <input type="text" (keyup)="onKey($event)" class="form-control" value="{{isEdit ? inputData.expenseTitle : ''}}" name="expenseTitle" placeholder="Enter Expense Title">
+        <label for="exampleInputEmail1" class="mt-2">Expense Type</label>
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.expenseType : ''}}" name="expenseType" placeholder="Enter Expense Type">
+        <label for="exampleInputEmail1" class="mt-2">Project</label> 
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.project : ''}}" name="project" placeholder="Enter Project"> 
+        <label for="exampleInputEmail1" class="mt-2">Department</label> 
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.department : ''}}" name="department" placeholder="Enter Department">      
+        <label for="exampleInputEmail1" class="mt-2">Expense Date</label> 
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.expenseDate : ''}}" name="expenseDate" placeholder="Enter Expense Date"> 
+        <label for="exampleInputEmail1" class="mt-2">Document</label> 
+        <input type="file"  class="form-control" name="Document" (change)="readFile($event)" placeholder="Enter Document" >  
+        <label for="exampleInputEmail1" class="mt-2">Expense amount</label> 
+        <input type="number" min="0" (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.expenseAmount : ''}}" name="expenseAmount" placeholder="Enter Expense amount">      
+    </div>    
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="activeModal.dismiss('Cross click')"  class="btn btn-danger btn-sm rounded-0 ">close</button>
+        <button type="button" *ngIf="!isEdit" (click)="addExpense()" class="btn btn-primary btn-sm rounded-0">submit</button>
+        <button type="button" *ngIf="isEdit" (click)="updateExpense()" class="btn btn-success btn-sm rounded-0">Update</button>
+      </div>

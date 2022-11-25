@@ -1,0 +1,16 @@
+<nav class="px-4 navbar navbar-expand-sm bg-success navbar-dark">
+    <a class="navbar-brand " href="/employees">Expense</a>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="router.url === '/employee'"  href="/employee">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="router.url === '/employee/expense'"  href="/employee/expense">Expense</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  (click)="logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
+  </nav>

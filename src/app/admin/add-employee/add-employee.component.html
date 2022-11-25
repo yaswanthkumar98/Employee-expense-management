@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <p class="modal-title">{{isEdit ? 'Update Employee' : 'Add New Employee'}}</p>
+    <a type="button" class="close fntsze-18" (click)="activeModal.dismiss('Cross click')" ><span aria-hidden="true">&times;</span></a>        
+  </div>
+  <div class="modal-body">
+    <span *ngIf="alert" class="text-center" style="color:red">{{alert}}</span>  
+    <div class="mt-3">
+        <label for="exampleInputEmail1">Firstname</label>
+        <input type="text" (keyup)="onKey($event)" class="form-control" value="{{isEdit ? inputData.firstName : ''}}" name="firstName" placeholder="Enter Firstname">
+        <label for="exampleInputEmail1" class="mt-2">Lastname</label>
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.lastName : ''}}" name="lastName" placeholder="Enter Lastname">
+        <label for="exampleInputEmail1" class="mt-2">Email address</label>
+        <input type="email"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.email : ''}}" name="email" placeholder="Enter email">
+        <label for="exampleInputEmail1" class="mt-2">Department</label>
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.department : ''}}" name="department" placeholder="Enter Department">
+        <label for="exampleInputEmail1" class="mt-2">Date of Joining</label>
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.joiningDate : ''}}" name="joiningDate" placeholder="Enter Joining Date">
+        <label for="exampleInputEmail1" class="mt-2">Employee Id</label>
+        <input type="text"  (keyup)="onKey($event)"  class="form-control" value="{{isEdit ? inputData.employeeId : ''}}" name="employeeId" placeholder="Enter Employee Id">    
+        <label for="exampleInputEmail1" class="mt-2">Password</label>
+        <input type="password"  (keyup)="onKey($event)"  class="form-control"  value="{{isEdit ? inputData.password : ''}}" name="password" placeholder="Enter Password">
+    </div>    
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="activeModal.dismiss('Cross click')" class="btn btn-danger btn-sm rounded-0 ">close</button>
+        <button type="button" *ngIf="!isEdit" (click)="addUser()" class="btn btn-primary btn-sm rounded-0">submit</button>
+        <button type="button" *ngIf="isEdit" (click)="updateUser()" class="btn btn-success btn-sm rounded-0">Update</button>
+      </div>

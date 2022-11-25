@@ -1,0 +1,49 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="m-5">
+    <h4 class="text-center text-success">Expense report for all employees(Admin)</h4>    
+    <table class="mt-3 table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ExpenseId</th>
+          <th scope="col">Expense Title</th>
+          <th scope="col">Expense Type</th>
+          <th scope="col">Project</th>
+          <th scope="col">Department</th>
+          <th scope="col">Expense Date</th>
+          <th scope="col">Uploaded Date</th>
+          <th scope="col">Approved Date</th>
+          <th scope="col">Document</th>
+          <th scope="col">Status</th>         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of service.expenseList; let Index = index">
+          <th scope="row">{{Index + 1}}</th>
+          <td>{{employee.id}}</td>
+          <td>{{employee.expenseTitle}}</td>
+          <td>{{employee.expenseType}}</td>
+          <td>{{employee.project}}</td>
+          <td>{{employee.department}}</td>
+          <td>{{employee.expenseDate}}</td>
+          <td>{{employee.uploadedDate}}</td>
+          <td>{{employee.approvedDate}}</td>
+          <td><button class="btn btn-primary btn-sm rounded-0" (click)="download(employee.id, employee.document)" type="button" data-toggle="tooltip" data-placement="top" title="View">View</button></td>
+          <td><ng-container *ngIf="employee.status !== 'Accepted' && employee.status !== 'Already claimed' else terminate ">
+            <ul class="list-inline m-0">
+              <li class="list-inline-item">
+                  <button class="btn btn-success btn-sm rounded-0" (click)="changeStatus(Index,employee.id, 'Accept', employee)" type="button" data-toggle="tooltip" data-placement="top" title="Accept">Accept</button>
+              </li>
+              <li class="list-inline-item">
+                  <button class="btn btn-danger btn-sm rounded-0" (click)="changeStatus(Index, employee.id, 'Reject', employee)" type="button" data-toggle="tooltip" data-placement="top" title="Reject">Reject</button>
+              </li>                
+          </ul>
+          </ng-container> 
+          <ng-template #terminate >
+            <p>{{employee.status}}</p>
+          </ng-template></td>          
+        </tr>
+       
+      </tbody>
+    </table>
+</div>
